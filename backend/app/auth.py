@@ -40,14 +40,21 @@ def set_auth_cookie(response: Response, token: str) -> None:
         token,
         max_age=settings.jwt_expire_hours * 3600,
         httponly=True,
-        samesite="lax",
+        samesite=settings.cookie_samesite,
         secure=settings.cookie_secure,
         path="/",
     )
 
 
 def clear_auth_cookie(response: Response) -> None:
-    response.delete_cookie(COOKIE_NAME, path="/")
+    settings = get_settings()
+    response.delete_cookie(
+        COOKIE_NAME,
+        path="/",
+        httponly=True,
+        samesite=settings.cookie_samesite,
+        secure=settings.cookie_secure,
+    )
 
 
 async def get_current_user(request: Request, session: AsyncSession = Depends(get_session)) -> User:

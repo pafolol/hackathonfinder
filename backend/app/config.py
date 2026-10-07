@@ -1,5 +1,6 @@
 import re
 from functools import lru_cache
+from typing import Literal
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -22,6 +23,8 @@ class Settings(BaseSettings):
 
     cors_origins: str = "http://localhost:5173"
     cookie_secure: bool = False
+    # "none" (junto con cookie_secure) cuando el frontend y la API están en sitios distintos.
+    cookie_samesite: Literal["lax", "strict", "none"] = "lax"
 
     @property
     def sqlalchemy_url(self) -> str:
