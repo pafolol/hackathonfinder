@@ -1,0 +1,25 @@
+/* Paleta: blanco y azul. */
+:root {
+  --azul: #0039a6;
+  --azul-profundo: #1f2863;
+  --azul-vivo: #1f5fe0;
+  --azul-niebla: #eef3fc;
+  --azul-linea: #d5dff1;
+
+  --tinta: #0a1a3a;
+  --tinta-suave: #4a5a7a;
+  --papel: #ffffff;
+  --fondo: #f7f9fd;
+
+  --urgente: #c8400c;
+  --urgente-fondo: #fdefe7;
+  --ok: #0c7a5b;
+  --ok-fondo: #e6f5f0;
+  --apagado: #8a94a8;
+
+  --fuente-titulo: 'Bricolage Grotesque', 'Segoe UI', sans-serif;
+  --fuente-texto: 'Instrument Sans', 'Segoe UI', sans-serif;
+
+  --radio: 10px;
+  --sombra: 0 1px 2px rgb(0 31 92 / 0.06), 0 8px 24px -12px rgb(0 31 92 / 0.18);
+}
