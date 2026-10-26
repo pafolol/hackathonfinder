@@ -17,10 +17,13 @@ function errorMessage(data: unknown, status: number): string {
   return `Error ${status}`
 }
 
+/** Dev: Vite proxies /api. Production: VITE_API_URL (.env.production). */
+const API_URL = (import.meta.env.VITE_API_URL || '/api').replace(/\/+$/, '')
+
 export async function api<T>(path: string, options: { method?: string; body?: unknown } = {}): Promise<T> {
   let response: Response
   try {
-    response = await fetch(`/api${path}`, {
+    response = await fetch(`${API_URL}${path}`, {
       method: options.method ?? 'GET',
       credentials: 'include',
       headers: options.body === undefined ? undefined : { 'Content-Type': 'application/json' },
